@@ -19,7 +19,7 @@ object StreamingTest {
     val errorLInes = lines.filter(_.contains("error"))
     errorLInes.print()
     ssc.start()
-    ssc.awaitTerminatio
+    ssc.awaitTermination
   }
 
 }
