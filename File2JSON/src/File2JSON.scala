@@ -7,8 +7,11 @@ object File2JSON {
 
   def main(args: Array[String]): Unit = {
     val file = Source.fromFile("TJTest.txt")
+    var title = ""
     for (line <- file.getLines()){
-      println(line)
+      if (line.contains("T")){
+
+      }
     }
   }
 
