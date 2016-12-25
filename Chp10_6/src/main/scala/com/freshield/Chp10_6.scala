@@ -15,7 +15,7 @@ object Chp10_6 {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Streaming Test")
     val ssc = new StreamingContext(conf,Seconds(1))
-    val lines = ssc.socketTextStream("localhost",7777)
+    val lines = ssc.textFileStream(".")
     val errorLInes = lines.filter(_.contains("error"))
     errorLInes.print()
     ssc.start()

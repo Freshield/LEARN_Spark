@@ -1,0 +1,6 @@
+hello world
+error
+interesting error
+what do you want
+an error?
+bye
