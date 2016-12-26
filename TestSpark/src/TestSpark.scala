@@ -12,9 +12,23 @@ object TestSpark {
     val conf = new SparkConf().setAppName("TestSpark")
     val sc = new SparkContext(conf)
 
-    val file = sc.textFile("TJTest.txt")
+    val file = sc.textFile("TJTest.txt",1)
 
-    file.foreach(println)
+    var temp = ""
+    val pairs = file.map(line => {
+      if (line.contains("T")){
+        temp = line
+        ("Title",line)
+      }else{
+        val value = line.split(",")
+        val valuePair = ("value",(("Lat",value(0)),("Lon",value(1),("Time",value(2)))))
+        (temp,valuePair)
+      }
+    })
+
+    val reduce = pairs.filter{case(key,value) => (key != "Title")}.groupByKey()
+
+    reduce.foreach(println)
 
     sc.stop()
   }
